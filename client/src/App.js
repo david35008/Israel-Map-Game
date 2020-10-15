@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import MyMap from './components/MyMap';
 
 function App() {
   return (
     <div className="App">
-    Hello Wrold
+      <MyMap />
     </div>
   );
 }
