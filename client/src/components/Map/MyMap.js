@@ -31,7 +31,7 @@ function MapField({ google, darkMode }) {
                 _mapLoaded(mapProps, map);
             }}
         >
-        </Map >
+        </Map>
     );
 }
 
