@@ -1,11 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import MyMap from "./components/MyMap";
+import Places from "./csvjson.json";
 
 function App() {
+  const [places, setPlaces] = useState(Places);
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <div className="App">
-    Hello Wrold
-    </div>
+    <>
+      <MyMap
+        places={places}
+        setPlaces={setPlaces}
+        darkMode={darkMode}
+      />
+    </>
   );
 }
 
