@@ -1,0 +1,22 @@
+.targetContainer{
+    /* z-index: 2; */
+    background-color: white;
+    position: absolute;
+    top:0;
+    min-width: auto;
+    min-height: auto;
+    width: 20vw;
+    border-radius: 0px 0px 10px 0px ;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.targetDetailsContainer{
+    margin: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+}

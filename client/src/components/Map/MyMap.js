@@ -1,9 +1,10 @@
-import React from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
+import React, { useState } from "react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import mapStyles from "./mapStyle";
 import mapStylesLite from "./mapStyleLite.js";
 
-function MapField({ google, darkMode }) {
+function MapField({ google, currentLocation, chosenLocation, setChosenLocation, darkMode }) {
+    const [showCorrectLocation, setShowCorrectLocation] = useState(false);
     const defaultCenterTLV = {
         lng: 34.7773256565267,
         lat: 31.379111742506,
@@ -30,7 +31,27 @@ function MapField({ google, darkMode }) {
             onReady={(mapProps, map) => {
                 _mapLoaded(mapProps, map);
             }}
+            onClick={(e, b, c) => {
+                if (!showCorrectLocation) {
+                    setChosenLocation({
+                        lat: c.latLng.lat(),
+                        lng: c.latLng.lng(),
+                    });
+                }
+            }}
         >
+            <Marker position={chosenLocation} />
+            {!!Object.keys(chosenLocation).length && (
+                <Marker
+                    icon={{
+                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                    }}
+                    position={{
+                        lat: currentLocation.location.lat,
+                        lng: currentLocation.location.lng,
+                    }}
+                />
+            )}
         </Map>
     );
 }
