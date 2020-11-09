@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import "../Styles/Target.css";
 
-export default function NewTargetGui({
+export default function Target({
     places,
     currentLocation,
     setCurrentLocation,
