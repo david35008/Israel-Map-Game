@@ -4,12 +4,14 @@ import "../Styles/Target.css";
 
 export default function Target({
     setGameStart,
+    setDistance,
     places,
     currentLocation,
     setCurrentLocation,
     setChosenLocation,
 }) {
     const CreateNewTarget = () => {
+        setDistance()
         setGameStart(true)
         const random = Math.floor(Math.random() * (places.length - 1) + 1);
         setCurrentLocation(places[random]);

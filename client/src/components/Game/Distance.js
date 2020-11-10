@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import "../Styles/Distance.css";
 export default function Distance({ chosenLocation, currentLocation, distance, setDistance }) {
@@ -15,10 +15,10 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
             Math.asin(
                 Math.sqrt(
                     Math.sin(difflat / 2) * Math.sin(difflat / 2) +
-                        Math.cos(rlat1) *
-                            Math.cos(rlat2) *
-                            Math.sin(difflon / 2) *
-                            Math.sin(difflon / 2)
+                    Math.cos(rlat1) *
+                    Math.cos(rlat2) *
+                    Math.sin(difflon / 2) *
+                    Math.sin(difflon / 2)
                 )
             );
         return Math.round(d);
@@ -36,7 +36,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
         if (!!Object.keys(chosenLocation).length && !!Object.keys(currentLocation).length) {
             setDistance(haversineDistance(chosenLocation, currentLocation));
         }
-    }, [chosenLocation, currentLocation]);
+    }, [chosenLocation, currentLocation, setDistance]);
     return (
         <>
             <div
@@ -44,8 +44,8 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
                     distance < 16
                         ? { backgroundColor: "green" }
                         : distance
-                        ? { backgroundColor: "red" }
-                        : {}
+                            ? { backgroundColor: "red" }
+                            : {}
                 }
                 className="distanceContainer"
             >

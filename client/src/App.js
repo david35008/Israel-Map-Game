@@ -18,6 +18,7 @@ function App() {
     <>
       <MyMap
         gameStart={gameStart}
+        distance={distance}
         places={places}
         setPlaces={setPlaces}
         chosenLocation={chosenLocation}
