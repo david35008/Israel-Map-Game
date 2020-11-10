@@ -3,12 +3,14 @@ import Button from "@material-ui/core/Button";
 import "../Styles/Target.css";
 
 export default function Target({
+    setGameStart,
     places,
     currentLocation,
     setCurrentLocation,
     setChosenLocation,
 }) {
     const CreateNewTarget = () => {
+        setGameStart(true)
         const random = Math.floor(Math.random() * (places.length - 1) + 1);
         setCurrentLocation(places[random]);
         setChosenLocation({});

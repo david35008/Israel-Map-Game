@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import mapStyles from "./mapStyle";
 import mapStylesLite from "./mapStyleLite.js";
 
-function MapField({ google, currentLocation, chosenLocation, setChosenLocation, darkMode }) {
+function MapField({ gameStart, google, currentLocation, chosenLocation, setChosenLocation, darkMode }) {
     const [showCorrectLocation, setShowCorrectLocation] = useState(false);
     const defaultCenterTLV = {
         lng: 34.7773256565267,
@@ -32,11 +32,14 @@ function MapField({ google, currentLocation, chosenLocation, setChosenLocation, 
                 _mapLoaded(mapProps, map);
             }}
             onClick={(e, b, c) => {
-                if (!showCorrectLocation) {
-                    setChosenLocation({
-                        lat: c.latLng.lat(),
-                        lng: c.latLng.lng(),
-                    });
+                if (gameStart) {
+
+                    if (!showCorrectLocation) {
+                        setChosenLocation({
+                            lat: c.latLng.lat(),
+                            lng: c.latLng.lng(),
+                        });
+                    }
                 }
             }}
         >

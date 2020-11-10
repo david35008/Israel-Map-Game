@@ -7,43 +7,46 @@ import Distance from "./components/Game/Distance";
 import Places from "./csvjson.json";
 
 function App() {
-    const [places, setPlaces] = useState(Places);
-    const [currentLocation, setCurrentLocation] = useState();
-    const [chosenLocation, setChosenLocation] = useState({});
-    const [distance, setDistance] = useState();
-    const [darkMode, setDarkMode] = useState(true);
+  const [gameStart, setGameStart] = useState(false);
+  const [places, setPlaces] = useState(Places);
+  const [currentLocation, setCurrentLocation] = useState();
+  const [chosenLocation, setChosenLocation] = useState({});
+  const [distance, setDistance] = useState();
+  const [darkMode, setDarkMode] = useState(true);
 
-    return (
-        <>
-            <MyMap
-                places={places}
-                setPlaces={setPlaces}
-                chosenLocation={chosenLocation}
-                setChosenLocation={setChosenLocation}
-                currentLocation={currentLocation}
-                darkMode={darkMode}
-            />
-            <ConfigPanel
-                places={places}
-                setPlaces={setPlaces}
-                darkMode={darkMode}
-                setDarkMode={setDarkMode}
-            />
-            <Target
-                places={places}
-                currentLocation={currentLocation}
-                setCurrentLocation={setCurrentLocation}
-                setChosenLocation={setChosenLocation}
-                setDistance={setDistance}
-            />
-            <Distance
-                chosenLocation={chosenLocation}
-                currentLocation={currentLocation}
-                distance={distance}
-                setDistance={setDistance}
-            />
-        </>
-    );
+  return (
+    <>
+      <MyMap
+        gameStart={gameStart}
+        places={places}
+        setPlaces={setPlaces}
+        chosenLocation={chosenLocation}
+        setChosenLocation={setChosenLocation}
+        currentLocation={currentLocation}
+        darkMode={darkMode}
+      />
+      <ConfigPanel
+        places={places}
+        setPlaces={setPlaces}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+      <Target
+        setGameStart={setGameStart}
+        places={places}
+        currentLocation={currentLocation}
+        setCurrentLocation={setCurrentLocation}
+        setChosenLocation={setChosenLocation}
+        setDistance={setDistance}
+      />
+      <Distance
+        chosenLocation={chosenLocation}
+        currentLocation={currentLocation}
+        distance={distance}
+        setDistance={setDistance}
+      />
+    </>
+  );
 }
 
 export default App;
