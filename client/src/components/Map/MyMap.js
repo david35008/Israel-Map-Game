@@ -44,7 +44,7 @@ function MapField({ gameStart, distance, google, currentLocation, chosenLocation
             }}
         >
             <Marker position={chosenLocation} />
-            {distance <= 15 && (
+            {distance <= 5 && (
                 <Marker
                     icon={{
                         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",

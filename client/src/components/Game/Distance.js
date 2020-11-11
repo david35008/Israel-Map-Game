@@ -24,7 +24,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
         return Math.round(d);
     }
     useEffect(() => {
-        if (distance < 16) {
+        if (distance <= 5) {
             Swal.fire({
                 icon: "success",
                 title: "כל הכבוד !",
@@ -41,7 +41,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
         <>
             <div
                 style={
-                    distance < 16
+                    distance <= 5
                         ? { backgroundColor: "green" }
                         : distance
                             ? { backgroundColor: "red" }
