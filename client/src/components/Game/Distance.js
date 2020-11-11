@@ -49,7 +49,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
                 }
                 className="distanceContainer"
             >
-                The distance is {distance}
+               <h1> The distance is {distance}</h1>
             </div>
         </>
     );
