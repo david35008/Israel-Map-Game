@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
+import Slider from './Slider';
 import "../Styles/Distance.css";
-export default function Distance({ chosenLocation, currentLocation, distance, setDistance }) {
+export default function Distance({ chosenLocation, currentLocation, distance, setDistance, winDistance, setWinDistance }) {
     function haversineDistance(mk1, mk2) {
         var R = 3958.8; // Radius of the Earth in miles
         var rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
@@ -24,7 +25,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
         return Math.round(d);
     }
     useEffect(() => {
-        if (distance <= 5) {
+        if (distance <= winDistance) {
             Swal.fire({
                 icon: "success",
                 title: "כל הכבוד !",
@@ -38,19 +39,20 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
         }
     }, [chosenLocation, currentLocation, setDistance]);
     return (
-        <>
+        <div className="distanceContainer">
+            <Slider winDistance={winDistance} setWinDistance={setWinDistance} />
             <div
                 style={
-                    distance <= 5
+                    distance <= winDistance
                         ? { backgroundColor: "green" }
                         : distance
                             ? { backgroundColor: "red" }
                             : {}
                 }
-                className="distanceContainer"
+
             >
-               <h1> The distance is {distance}</h1>
+                <h1 className='hebrew-text Calibri' > המרחק מהיעד הוא  : {distance} ק"מ</h1>
             </div>
-        </>
+        </ div>
     );
 }

@@ -11,7 +11,7 @@ export default function Target({
     setChosenLocation,
 }) {
     const CreateNewTarget = () => {
-        setDistance()
+        setDistance('-')
         setGameStart(true)
         const random = Math.floor(Math.random() * (places.length - 1) + 1);
         setCurrentLocation(places[random]);
