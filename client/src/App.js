@@ -11,7 +11,8 @@ function App() {
   const [places, setPlaces] = useState(Places);
   const [currentLocation, setCurrentLocation] = useState();
   const [chosenLocation, setChosenLocation] = useState({});
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState('-');
+  const [winDistance, setWinDistance] = useState(5);
   const [darkMode, setDarkMode] = useState(true);
 
   return (
@@ -44,6 +45,8 @@ function App() {
         chosenLocation={chosenLocation}
         currentLocation={currentLocation}
         distance={distance}
+        winDistance={winDistance}
+        setWinDistance={setWinDistance}
         setDistance={setDistance}
       />
     </>

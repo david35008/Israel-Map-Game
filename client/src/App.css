@@ -1,0 +1,20 @@
+.hebrew-text {
+    /* list-style-type: hebrew; */
+    direction: rtl;
+    /* text-align: right; */
+}
+
+.padding {
+    padding-top: 15px;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    font-family: Calibri;
+}
+
+.Calibri {
+    font-family: Calibri;
+}
+
+.full-width {
+    width: 100%;
+}
