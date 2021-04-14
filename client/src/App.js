@@ -26,6 +26,7 @@ function App() {
         setChosenLocation={setChosenLocation}
         currentLocation={currentLocation}
         darkMode={darkMode}
+        winDistance={winDistance}
       />
       <ConfigPanel
         places={places}
