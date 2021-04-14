@@ -38,7 +38,7 @@ export default function Target({
                     </div>
                 )}
                 <Button style={{ margin: "20px" }} variant="contained" onClick={CreateNewTarget}>
-                    {currentLocation ? "Next" : "Get Start"}
+                    {currentLocation ? "היעד הבא" : "בוא נתחיל"}
                 </Button>
             </div>
         </>
