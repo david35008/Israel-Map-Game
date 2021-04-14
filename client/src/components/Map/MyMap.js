@@ -3,7 +3,12 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import mapStyles from "./mapStyle";
 import mapStylesLite from "./mapStyleLite.js";
 
-function MapField({ gameStart, distance, winDistance, google, currentLocation, chosenLocation, setChosenLocation, darkMode }) {
+function MapField({
+    gameStart, distance, winDistance,
+    google, currentLocation, chosenLocation,
+    setChosenLocation, darkMode,
+    tries, maxTries, setTries
+}) {
     const [showCorrectLocation] = useState(false);
     const defaultCenterTLV = {
         lng: 34.7773256565267,
@@ -33,7 +38,7 @@ function MapField({ gameStart, distance, winDistance, google, currentLocation, c
             }}
             onClick={(e, b, c) => {
                 if (gameStart) {
-
+                    setTries((prevState)=> prevState + 1)
                     if (!showCorrectLocation) {
                         setChosenLocation({
                             lat: c.latLng.lat(),
@@ -44,7 +49,7 @@ function MapField({ gameStart, distance, winDistance, google, currentLocation, c
             }}
         >
             <Marker position={chosenLocation} />
-            {distance <= winDistance && (
+            {(distance <= winDistance || tries >= maxTries) && (
                 <Marker
                     icon={{
                         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",

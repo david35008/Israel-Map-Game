@@ -21,3 +21,10 @@
     font-size: 26px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.tries-wrapper {
+    /* width: 20% !important;
+    min-width: 40px !important;
+    margin: 20px auto;
+    transform: scale(1.5); */
+}

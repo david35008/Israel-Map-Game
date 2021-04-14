@@ -7,6 +7,9 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Divider from '@material-ui/core/Divider';
 import Slider from './Slider';
 import ConfigPanel from "./ConfigPanel";
+import Grid from '@material-ui/core/Grid';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 
 const useStyles = makeStyles({
     list: {
@@ -23,7 +26,8 @@ export default function SwipeableTemporaryDrawer({
     settlement, setSettlement,
     moshav, setMoshav,
     kibbutz, setKibbutz,
-    winDistance, setWinDistance
+    winDistance, setWinDistance,
+    setMaxTries, maxTries
 }) {
     const classes = useStyles();
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -36,6 +40,18 @@ export default function SwipeableTemporaryDrawer({
         setDrawerOpen((prevState) => !prevState);
     };
 
+    const maxTriesChange = (isPlus) => {
+        setMaxTries((prevState) => {
+            if (isPlus) {
+                return prevState + 1
+            } else {
+                // eslint-disable-next-line
+                if (maxTries == 1) return prevState
+                return prevState - 1
+            }
+        });
+    }
+
     const list = (anchor) => (
         <div
             className={clsx(classes.list, {
@@ -45,6 +61,26 @@ export default function SwipeableTemporaryDrawer({
             onKeyDown={toggleDrawer()}
         >
             <Slider winDistance={winDistance} setWinDistance={setWinDistance} />
+            <Divider />
+            <div className='hebrew-text-small important center' > מספר הנסיונות</div>
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                className='tries-wrapper'
+            >
+                <IconButton onClick={() => maxTriesChange(true)} >
+                    <AddBoxIcon />
+                </IconButton>
+                <span
+                >
+                    {maxTries}
+                </span>
+                <IconButton onClick={() => maxTriesChange(false)}>
+                    <IndeterminateCheckBoxIcon />
+                </IconButton>
+            </Grid>
             <Divider />
             <ConfigPanel
                 places={places}
