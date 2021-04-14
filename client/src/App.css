@@ -1,7 +1,15 @@
 .hebrew-text {
-    /* list-style-type: hebrew; */
     direction: rtl;
-    /* text-align: right; */
+    font-size: 3.5vw;
+}
+
+.hebrew-text-small.important{
+    direction: rtl !important;
+    font-size: 1rem !important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.00938em !important;
 }
 
 .padding {

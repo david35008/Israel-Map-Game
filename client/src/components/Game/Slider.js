@@ -5,48 +5,26 @@ import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
+        width: '80%',
+        marginLeft: '2vw'
     },
     margin: {
         height: theme.spacing(3),
     },
 }));
 
-const marks = [
-    {
-        value: 0,
-        label: '0°C',
-    },
-    {
-        value: 20,
-        label: '20°C',
-    },
-    {
-        value: 37,
-        label: '37°C',
-    },
-    {
-        value: 100,
-        label: '100°C',
-    },
-];
-
-function valuetext(value) {
-    return `${value}°C`;
-}
 
 export default function DiscreteSlider({ winDistance, setWinDistance }) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Typography id="discrete-slider-always" className='hebrew-text padding' gutterBottom>
+            <Typography id="discrete-slider-always" className='hebrew-text-small important padding' gutterBottom>
                 טווח המרחק מהיעד לתשובה נכונה (ק"מ)
       </Typography>
             <Slider
                 onChangeCommitted={(event, value) => setWinDistance(value)}
                 defaultValue={winDistance}
-                getAriaValueText={valuetext}
                 step={1}
                 max={100}
                 min={0}
