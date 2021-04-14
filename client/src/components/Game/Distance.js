@@ -31,6 +31,7 @@ export default function Distance({ chosenLocation, currentLocation, distance, se
                 text: `קמ ${distance} המרחק בין המיקומים הינו `,
             });
         }
+        // eslint-disable-next-line
     }, [distance]);
     useEffect(() => {
         if (!!Object.keys(chosenLocation).length && !!Object.keys(currentLocation).length) {

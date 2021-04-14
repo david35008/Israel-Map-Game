@@ -16,6 +16,8 @@ function App() {
   const [chosenLocation, setChosenLocation] = useState({});
   const [distance, setDistance] = useState('-');
   const [winDistance, setWinDistance] = useState(5);
+  const [tries, setTries] = useState(0);
+  const [maxTries, setMaxTries] = useState(3);
 
   return (
     <>
@@ -28,6 +30,9 @@ function App() {
         setChosenLocation={setChosenLocation}
         currentLocation={currentLocation}
         winDistance={winDistance}
+        maxTries={maxTries}
+        tries={tries}
+        setTries={setTries}
       />
       <Target
         setGameStart={setGameStart}
@@ -47,6 +52,10 @@ function App() {
         setKibbutz={setKibbutz}
         winDistance={winDistance}
         setWinDistance={setWinDistance}
+        tries={tries}
+        setTries={setTries}
+        maxTries={maxTries}
+        setMaxTries={setMaxTries}
       />
       <Distance
         chosenLocation={chosenLocation}

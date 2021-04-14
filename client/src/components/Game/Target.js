@@ -15,11 +15,13 @@ export default function Target({
     settlement, setSettlement,
     moshav, setMoshav,
     kibbutz, setKibbutz,
-    winDistance, setWinDistance
+    winDistance, setWinDistance,
+    setTries, setMaxTries, maxTries
 }) {
     const CreateNewTarget = () => {
         setDistance('-')
         setGameStart(true)
+        setTries(0)
         const random = Math.floor(Math.random() * (places.length - 1) + 1);
         setCurrentLocation(places[random]);
         setChosenLocation({});
@@ -68,6 +70,8 @@ export default function Target({
                         setKibbutz={setKibbutz}
                         winDistance={winDistance}
                         setWinDistance={setWinDistance}
+                        maxTries={maxTries}
+                        setMaxTries={setMaxTries}
                     />
                 </Grid>
             </div>
