@@ -41,7 +41,7 @@ export default function DiscreteSlider({ winDistance, setWinDistance }) {
     return (
         <div className={classes.root}>
             <Typography id="discrete-slider-always" className='hebrew-text padding' gutterBottom>
-                טווח המרחק מהיעד לתשובה נכונה
+                טווח המרחק מהיעד לתשובה נכונה (ק"מ)
       </Typography>
             <Slider
                 onChangeCommitted={(event, value) => setWinDistance(value)}
