@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
-import IconButton from "@material-ui/core/IconButton";
-import Brightness5Icon from "@material-ui/icons/Brightness5";
-import Brightness7Icon from "@material-ui/icons/Brightness7";
+// import IconButton from "@material-ui/core/IconButton";
+// import Brightness5Icon from "@material-ui/icons/Brightness5";
+// import Brightness7Icon from "@material-ui/icons/Brightness7";
 import "../Styles/ConfigPanel.css";
 import Places from "../../csvjson.json";
 
@@ -118,9 +118,9 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     />
                 </FormGroup>
             </div>
-            <IconButton color="primary" onClick={darkModeHandle} aria-label="delete">
+            {/* <IconButton color="primary" onClick={darkModeHandle} aria-label="delete">
                 {darkMode ? <Brightness7Icon /> : <Brightness5Icon />}
-            </IconButton>
+            </IconButton> */}
         </div>
     );
 }
