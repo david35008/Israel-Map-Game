@@ -1,18 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
-// import IconButton from "@material-ui/core/IconButton";
-// import Brightness5Icon from "@material-ui/icons/Brightness5";
-// import Brightness7Icon from "@material-ui/icons/Brightness7";
 import "../Styles/ConfigPanel.css";
 import Places from "../../csvjson.json";
 
-export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }) {
-    const [city, setCity] = useState(true);
-    const [settlement, setSettlement] = useState(true);
-    const [moshav, setMoshav] = useState(true);
-    const [kibbutz, setKibbutz] = useState(true);
+export default function ConfigPanel({
+    places, setPlaces,
+    city, setCity,
+    settlement, setSettlement,
+    moshav, setMoshav,
+    kibbutz, setKibbutz, }) {
+
+    const checkForMinPlace = (current) => {
+        switch (current) {
+            case "city": {
+                if (!settlement && !moshav && !kibbutz) {
+                    alert('חייב לבחור לפחות סוג מקום אחד')
+                    return false
+                }
+                return true
+            }
+            case "settlement": {
+                if (!city && !moshav && !kibbutz) {
+                    alert('חייב לבחור לפחות סוג מקום אחד')
+                    return false
+                }
+                return true
+            }
+            case "moshav": {
+                if (!city && !settlement && !kibbutz) {
+                    alert('חייב לבחור לפחות סוג מקום אחד')
+                    return false
+                }
+                return true
+            }
+            case "kibbutz": {
+                if (!city && !settlement && !moshav) {
+                    alert('חייב לבחור לפחות סוג מקום אחד')
+                    return false
+                }
+                return true
+            }
+            default:
+                return true
+        }
+    }
 
     const handleChange = (event) => {
         switch (event.target.name) {
@@ -22,6 +55,9 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     const citys = Places.filter((obj) => obj.TYPE.includes("תושבים"));
                     setPlaces([...places, ...citys]);
                 } else {
+                    if (!checkForMinPlace("city")) {
+                        return setCity(true);
+                    }
                     const filtering = places.filter((obj) => !obj.TYPE.includes("תושבים"));
                     setPlaces(filtering);
                 }
@@ -33,6 +69,9 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     const citys = Places.filter((obj) => obj.TYPE.includes("ישובים"));
                     setPlaces([...places, ...citys]);
                 } else {
+                    if (!checkForMinPlace("settlement")) {
+                        return setSettlement(true);
+                    }
                     const filtering = places.filter((obj) => !obj.TYPE.includes("ישובים"));
                     setPlaces(filtering);
                 }
@@ -44,6 +83,9 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     const citys = Places.filter((obj) => obj.TYPE.includes("מושבים"));
                     setPlaces([...places, ...citys]);
                 } else {
+                    if (!checkForMinPlace("moshav")) {
+                        return setMoshav(true);
+                    }
                     const filtering = places.filter((obj) => !obj.TYPE.includes("מושבים"));
                     setPlaces(filtering);
                 }
@@ -55,6 +97,9 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     const citys = Places.filter((obj) => obj.TYPE.includes("קיבוצים"));
                     setPlaces([...places, ...citys]);
                 } else {
+                    if (!checkForMinPlace("kibbutz")) {
+                        return setKibbutz(true);
+                    }
                     const filtering = places.filter((obj) => !obj.TYPE.includes("קיבוצים"));
                     setPlaces(filtering);
                 }
@@ -65,12 +110,10 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
         }
     };
 
-    const darkModeHandle = () => {
-        setDarkMode((prev) => !prev);
-    };
     return (
         <div className="GuiContainer">
             <div>
+                <h2 className='hebrew-text-small important' >בחר את סוג המקומות:</h2>
                 <FormGroup columns>
                     <FormControlLabel
                         control={
@@ -118,9 +161,6 @@ export default function ConfigPanel({ places, setPlaces, darkMode, setDarkMode }
                     />
                 </FormGroup>
             </div>
-            {/* <IconButton color="primary" onClick={darkModeHandle} aria-label="delete">
-                {darkMode ? <Brightness7Icon /> : <Brightness5Icon />}
-            </IconButton> */}
         </div>
     );
 }
