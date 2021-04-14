@@ -52,8 +52,8 @@ export default function Target({
                     alignItems="center"
                 >
 
-                    <Button style={{ margin: "20px" }} variant="contained" onClick={CreateNewTarget}>
-                        {currentLocation ? "היעד הבא" : "בוא נתחיל"}
+                    <Button style={{ margin: "5px 20px 5px 20px" }} variant="contained" onClick={CreateNewTarget}>
+                        <span className='hebrew-text'>{currentLocation ? "היעד הבא" : "בוא נתחיל"}</span>
                     </Button>
                     <ConfigDrawer
                         setPlaces={setPlaces}
